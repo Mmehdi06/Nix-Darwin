@@ -34,7 +34,9 @@
           pkgs.ripgrep
           pkgs.bat
           pkgs.fzf
+          pkgs.delta
           pkgs.zoxide
+          pkgs.lazygit
           pkgs.eza
           pkgs.aerospace
           pkgs.jankyborders
