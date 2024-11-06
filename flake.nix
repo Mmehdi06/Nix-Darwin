@@ -34,7 +34,6 @@
           pkgs.ripgrep
           pkgs.bat
           pkgs.fzf
-          pkgs.delta
           pkgs.zoxide
           pkgs.lazygit
           pkgs.eza
@@ -71,6 +70,7 @@
          "1password"
          "orbstack"
          "miniconda"
+         "wezterm"
          ];
          onActivation.cleanup = "zap";
          onActivation.autoUpdate = true;
@@ -115,7 +115,7 @@
               "/System/Applications/System Settings.app"
               "/System/Volumes/Data/Applications/Microsoft Outlook.app"
               "${pkgs.arc-browser}/Applications/Arc.app"
-              "${pkgs.alacritty}/Applications/Alacritty.app"
+              "/Applications/WezTerm.app"
               "${pkgs.tableplus}/Applications/TablePlus.app"
               
           ];
@@ -182,6 +182,7 @@
       "/Users/mehdimerkachi/.config/tmux".source = /Users/mehdimerkachi/dotfiles/tmux;
       "/Users/mehdimerkachi/.config/aerospace".source = /Users/mehdimerkachi/dotfiles/aerospace;
       "/Users/mehdimerkachi/.config/alacritty".source = /Users/mehdimerkachi/dotfiles/alacritty;
+      "/Users/mehdimerkachi/.config/wezterm".source = /Users/mehdimerkachi/dotfiles/wezterm;
       "/Users/mehdimerkachi/.config/starship".source = /Users/mehdimerkachi/dotfiles/starship;
       "/Users/mehdimerkachi/.zshrc".source = /Users/mehdimerkachi/dotfiles/.zshrc;
       };
