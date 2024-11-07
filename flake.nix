@@ -23,10 +23,9 @@
       system.keyboard.enableKeyMapping = true;
       system.keyboard.remapCapsLockToControl = true;
 
-
+      
       environment.systemPackages =
-        [ pkgs.neovim
-          pkgs.tmux
+        [ 
           pkgs.git
           pkgs.gh
           pkgs.fd
@@ -38,12 +37,7 @@
           pkgs.lazygit
           pkgs.eza
           pkgs.aerospace
-          pkgs.jankyborders
           pkgs.starship
-          pkgs.alacritty
-          pkgs.raycast
-          pkgs.arc-browser
-          pkgs.tableplus
           pkgs.hidden-bar
         ];
 
@@ -56,12 +50,19 @@
           "Outlook" = 985367838;
         };
 
+        # Homebrew taps to install.
+        taps = [
+          "FelixKratz/formulae"
+        ];
         # Homebrew packages to install.
         brews = [
+          "neovim"
+          "tmux"
           "mas"
           "zsh-syntax-highlighting"
           "zsh-autosuggestions"
           "zsh-completions"
+          "borders"
         ];
 
         # Homebrew casksto install.
@@ -71,7 +72,14 @@
          "orbstack"
          "miniconda"
          "wezterm"
+         "arc"
+         "zen-browser"
+         "tableplus"
+         "alacritty"
+         "raycast"
+         "kitty"
          ];
+
          onActivation.cleanup = "zap";
          onActivation.autoUpdate = true;
          onActivation.upgrade = true;
@@ -114,9 +122,9 @@
           dock.persistent-apps = [
               "/System/Applications/System Settings.app"
               "/System/Volumes/Data/Applications/Microsoft Outlook.app"
-              "${pkgs.arc-browser}/Applications/Arc.app"
+              "/Applications/Arc.app"
               "/Applications/WezTerm.app"
-              "${pkgs.tableplus}/Applications/TablePlus.app"
+              "/Applications/TablePlus.app"
               
           ];
           dock.persistent-others = [
@@ -163,7 +171,7 @@
       # The platform the configuration will be used on.
       nixpkgs.hostPlatform = "aarch64-darwin";
     };
-    homeconfig = {pkgs, ...}: {
+    homeconfig = { config, pkgs, ...}: {
       # this is internal compatibility configuration 
       # for home-manager, don't change this!
       home.stateVersion = "23.05";
@@ -175,16 +183,17 @@
       home.sessionVariables = {
           EDITOR = "neovim";
       };
+      
       targets.darwin.currentHostDefaults."com.apple.controlcenter".BatteryShowPercentage = true;
 
       home.file = {
-      "/Users/mehdimerkachi/.config/nvim".source = /Users/mehdimerkachi/dotfiles/nvim;
-      "/Users/mehdimerkachi/.config/tmux".source = /Users/mehdimerkachi/dotfiles/tmux;
-      "/Users/mehdimerkachi/.config/aerospace".source = /Users/mehdimerkachi/dotfiles/aerospace;
-      "/Users/mehdimerkachi/.config/alacritty".source = /Users/mehdimerkachi/dotfiles/alacritty;
-      "/Users/mehdimerkachi/.config/wezterm".source = /Users/mehdimerkachi/dotfiles/wezterm;
-      "/Users/mehdimerkachi/.config/starship".source = /Users/mehdimerkachi/dotfiles/starship;
-      "/Users/mehdimerkachi/.zshrc".source = /Users/mehdimerkachi/dotfiles/.zshrc;
+      "/Users/mehdimerkachi/.config/nvim".source = config.lib.file.mkOutOfStoreSymlink "/Users/mehdimerkachi/dotfiles/nvim";
+      "/Users/mehdimerkachi/.config/tmux".source = config.lib.file.mkOutOfStoreSymlink  "/Users/mehdimerkachi/dotfiles/tmux";
+      "/Users/mehdimerkachi/.config/aerospace".source = config.lib.file.mkOutOfStoreSymlink  "/Users/mehdimerkachi/dotfiles/aerospace";
+      "/Users/mehdimerkachi/.config/alacritty".source = config.lib.file.mkOutOfStoreSymlink  "/Users/mehdimerkachi/dotfiles/alacritty";
+      "/Users/mehdimerkachi/.config/wezterm".source = config.lib.file.mkOutOfStoreSymlink  "/Users/mehdimerkachi/dotfiles/wezterm";
+      "/Users/mehdimerkachi/.config/starship".source = config.lib.file.mkOutOfStoreSymlink  "/Users/mehdimerkachi/dotfiles/starship";
+      "/Users/mehdimerkachi/.zshrc".source = config.lib.file.mkOutOfStoreSymlink  "/Users/mehdimerkachi/dotfiles/.zshrc";
       };
     };
   in
