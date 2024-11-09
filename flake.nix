@@ -78,6 +78,7 @@
          "alacritty"
          "raycast"
          "kitty"
+         "cleanshot"
          ];
 
          onActivation.cleanup = "zap";
