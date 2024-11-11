@@ -63,6 +63,7 @@
           "zsh-autosuggestions"
           "zsh-completions"
           "borders"
+          "go"
         ];
 
         # Homebrew casksto install.
