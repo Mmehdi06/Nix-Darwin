@@ -194,7 +194,7 @@
       "/Users/mehdimerkachi/.config/aerospace".source = config.lib.file.mkOutOfStoreSymlink  "/Users/mehdimerkachi/dotfiles/aerospace";
       "/Users/mehdimerkachi/.config/alacritty".source = config.lib.file.mkOutOfStoreSymlink  "/Users/mehdimerkachi/dotfiles/alacritty";
       "/Users/mehdimerkachi/.config/wezterm".source = config.lib.file.mkOutOfStoreSymlink  "/Users/mehdimerkachi/dotfiles/wezterm";
-      "/Users/mehdimerkachi/.config/starship".source = config.lib.file.mkOutOfStoreSymlink  "/Users/mehdimerkachi/dotfiles/starship";
+      "/Users/mehdimerkachi/.config/starship.toml".source = config.lib.file.mkOutOfStoreSymlink  "/Users/mehdimerkachi/dotfiles/starship/starship.toml";
       "/Users/mehdimerkachi/.zshrc".source = config.lib.file.mkOutOfStoreSymlink  "/Users/mehdimerkachi/dotfiles/.zshrc";
       };
     };
