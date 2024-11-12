@@ -70,6 +70,7 @@
         casks = [
          "the-unarchiver"
          "1password"
+            "spotify"
          "orbstack"
          "miniconda"
          "wezterm"
