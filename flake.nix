@@ -27,6 +27,7 @@
         environment.systemPackages =
           [ 
             pkgs.git
+            pkgs.pnpm
             pkgs.gh
             pkgs.fd
             pkgs.mkalias
@@ -36,9 +37,12 @@
             pkgs.zoxide
             pkgs.lazygit
             pkgs.eza
-            pkgs.aerospace
+            pkgs.maven
+            pkgs.nmap
+            pkgs.wget
+            pkgs.qbittorrent
             pkgs.starship
-            pkgs.hidden-bar
+            pkgs.ice-bar
           ];
 
         # Set up homebrew.
@@ -48,11 +52,13 @@
           # Mas apps to install.
           masApps = {
             "Outlook" = 985367838;
+            "Klack" = 6446206067;
           };
 
           # Homebrew taps to install.
           taps = [
             "FelixKratz/formulae"
+            "nikitabobko/tap"
           ];
           # Homebrew packages to install.
           brews = [
@@ -64,6 +70,7 @@
             "zsh-completions"
             "borders"
             "go"
+            "yt-dlp"
           ];
 
           # Homebrew casksto install.
@@ -71,6 +78,7 @@
             "the-unarchiver"
             "1password"
             "spotify"
+            "ghostty"
             "orbstack"
             "miniconda"
             "wezterm"
@@ -80,6 +88,7 @@
             "alacritty"
             "raycast"
             "kitty"
+            "aerospace"
             "cleanshot"
           ];
 
@@ -115,6 +124,7 @@
           done
           '';
 
+
         # System configuration
         system.defaults = {
           # Dock Settings
@@ -126,13 +136,9 @@
             "/System/Applications/System Settings.app"
             "/System/Volumes/Data/Applications/Microsoft Outlook.app"
             "/Applications/Arc.app"
-            "/Applications/WezTerm.app"
+            "/Applications/Ghostty.app"
             "/Applications/TablePlus.app"
-
-          ];
-          dock.persistent-others = [
-            "/Users/mehdimerkachi/Downloads"
-            "/Applications"
+            "/Applications/OrbStack.app/"
           ];
           dock.show-recents = false;
 
@@ -149,6 +155,36 @@
           NSGlobalDomain."com.apple.mouse.tapBehavior" = 1; # Enable tap to click with mouse
           NSGlobalDomain.AppleInterfaceStyle = "Dark";   # Set the interface style to Dark mode
           NSGlobalDomain.KeyRepeat = 2;                   # Set key repeat rate
+
+          CustomUserPreferences = {
+            # Sets Downloads folder with fan view in Dock
+            "com.apple.dock" = {
+              persistent-others = [
+                {
+                  "tile-data" = {
+                    "file-data" = {
+                      "_CFURLString" = "/Users/mehdimerkachi/Downloads";
+                      "_CFURLStringType" = 0;
+                    };
+                    "arrangement" = 3;  # sorting order
+                    "displayas" = 1;    # 1 for fan display
+                    "showas" = 1;       # 1 for stack view
+                  };
+                  "tile-type" = "directory-tile";
+                }
+                {
+                  "tile-data" = {
+                    "file-data" = {
+                      "_CFURLString" = "/Applications";
+                      "_CFURLStringType" = 0;
+                    };
+                  };
+                  "tile-type" = "directory-tile";
+                }
+              ];
+            };
+          };  
+
 
         };
 
@@ -197,6 +233,7 @@
           "/Users/mehdimerkachi/.config/wezterm".source = config.lib.file.mkOutOfStoreSymlink  "/Users/mehdimerkachi/dotfiles/wezterm";
           "/Users/mehdimerkachi/.config/starship.toml".source = config.lib.file.mkOutOfStoreSymlink  "/Users/mehdimerkachi/dotfiles/starship/starship.toml";
           "/Users/mehdimerkachi/.zshrc".source = config.lib.file.mkOutOfStoreSymlink  "/Users/mehdimerkachi/dotfiles/.zshrc";
+          "/Users/mehdimerkachi/.config/ghostty".source = config.lib.file.mkOutOfStoreSymlink  "/Users/mehdimerkachi/dotfiles/ghostty";
         };
       };
     in
